@@ -1,11 +1,21 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, View, Text } from 'react-native';
+import EncryptionForm from './src/components/EncryptionForm';
 
 export default function App() {
+  const [encryptedData, setEncryptedData] = useState<string>('');
+  
+  const handleEncryption = (data: string) => {
+    setEncryptedData(data);
+  };
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <Text style={styles.title}>Data Encryption App</Text>
+      <EncryptionForm onEncrypt={handleEncryption} />
+      {encryptedData ? (
+        <Text style={styles.output}>Encrypted Data: {encryptedData}</Text>
+      ) : null}
     </View>
   );
 }
@@ -13,8 +23,17 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
     justifyContent: 'center',
+    alignItems: 'center',
+    padding: 20,
+  },
+  title: {
+    fontSize: 24,
+    marginBottom: 20,
+  },
+  output: {
+    marginTop: 20,
+    fontSize: 16,
+    color: 'blue',
   },
 });
