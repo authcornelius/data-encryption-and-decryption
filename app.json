@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "data-encryption-app",
-    "slug": "data-encryption-app",
+    "slug": "data-encryption-and-decryption",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -19,10 +19,17 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.techboss.dataencryptionanddecryption"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "851c60c4-4fea-4523-a80c-19c2930638b2"
+      }
+    },
+    "owner": "techboss"
   }
 }
