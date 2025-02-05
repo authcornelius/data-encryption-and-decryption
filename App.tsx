@@ -1,39 +1,40 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, SafeAreaView, StatusBar } from 'react-native';
 import EncryptionForm from './src/components/EncryptionForm';
 
 export default function App() {
-  const [encryptedData, setEncryptedData] = useState<string>('');
-  
-  const handleEncryption = (data: string) => {
-    setEncryptedData(data);
-  };
+    const [encryptedData, setEncryptedData] = useState<string>('');
 
-  return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Data Encryption App</Text>
-      <EncryptionForm onEncrypt={handleEncryption} />
-      {encryptedData ? (
-        <Text style={styles.output}>Encrypted Data: {encryptedData}</Text>
-      ) : null}
-    </View>
-  );
+    const handleEncryption = (data: string) => {
+        setEncryptedData(data);
+    };
+
+    return (
+        <SafeAreaView style={styles.safeArea}>
+            <StatusBar barStyle="dark-content" />
+            <View style={styles.container}>
+                <Text style={styles.title}>Data Encryption</Text>
+                <EncryptionForm onEncrypt={handleEncryption} />
+            </View>
+        </SafeAreaView>
+    );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 20,
-  },
-  title: {
-    fontSize: 24,
-    marginBottom: 20,
-  },
-  output: {
-    marginTop: 20,
-    fontSize: 16,
-    color: 'blue',
-  },
+    safeArea: {
+        flex: 1,
+        backgroundColor: '#fff',
+    },
+    container: {
+        flex: 1,
+        padding: 20,
+        backgroundColor: '#fff',
+    },
+    title: {
+        fontSize: 28,
+        fontWeight: 'bold',
+        color: '#333',
+        marginBottom: 30,
+        textAlign: 'center',
+    },
 });

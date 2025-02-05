@@ -1,11 +1,18 @@
-function encrypt(plaintext: string, secretKey: string): string {
-    let encrypted = '';
-    for (let i = 0; i < plaintext.length; i++) {
-        const charCode = plaintext.charCodeAt(i);
-        const keyCharCode = secretKey.charCodeAt(i % secretKey.length);
-        encrypted += String.fromCharCode(charCode + keyCharCode);
+export const encrypt = (plainText: string, secretKey: string): string => {
+    let encryptedString = '';
+    const keyLength = secretKey.length;
+   
+    if (!plainText || !secretKey) {
+        throw new Error('Both plaintext and secret key are required');
     }
-    return encrypted;
-}
 
-export default encrypt;
+    const length = plainText.length;
+   
+    for (let i = 0; i < length; i++) {
+        const charCode = plainText.charCodeAt(i);
+        const keyCharCode = secretKey.charCodeAt(i % keyLength);
+        encryptedString += String.fromCharCode(charCode + keyCharCode);
+    }
+
+    return encryptedString;
+};
